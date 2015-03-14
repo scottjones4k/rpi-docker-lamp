@@ -7,13 +7,13 @@ Out-of-the-box LAMP image (PHP+MySQL) for Raspberry Pi (based Raspbian)
 Usage
 -----
 
-To create the image `joaquindlz/rpi-lamp`, execute the following command on the rpi-docker-lamp folder:
+To create the image `joaquindlz/rpi-docker-lamp`, execute the following command on the rpi-docker-lamp folder:
 
-	docker build -t rpi-lamp .
+	docker build -t rpi-docker-lamp .
 
 You can now push your new image to the registry:
 
-	docker push rpi-lamp
+	docker push rpi-docker-lamp
 
 
 Running your LAMP docker image
@@ -21,7 +21,7 @@ Running your LAMP docker image
 
 Start your image binding the external ports 80 and 3306 in all interfaces to your container:
 
-	docker run -d -p 80:80 -p 3306:3306 rpi-lamp
+	docker run -d -p 80:80 -p 3306:3306 rpi-docker-lamp
 
 Test your deployment:
 
@@ -36,7 +36,7 @@ Loading your custom PHP application
 In order to replace the "Hello World" application that comes bundled with this docker image,
 create a new `Dockerfile` in an empty folder with the following contents:
 
-	FROM joaquindlz/rpi-lamp:latest
+	FROM joaquindlz/rpi-docker-lamp:latest
 	RUN rm -fr /app && git clone https://github.com/username/customapp.git /app
 	EXPOSE 80 3306
 	CMD ["/run.sh"]
